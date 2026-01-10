@@ -97,7 +97,8 @@ if(ENABLE_COVERAGE)
 
         add_custom_target(coverage
             COMMAND ${LCOV_PATH} --capture --directory . --output-file coverage.info
-            COMMAND ${LCOV_PATH} --remove coverage.info --ignore-errors '/usr/*' --output-file coverage.info
+            # Add any exclusion patterns here
+            # COMMAND ${LCOV_PATH} --remove coverage.info '/usr/*' --output-file coverage.info
             COMMAND ${GENHTML_PATH} -o coverage_report coverage.info
             WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
             COMMENT "Generating gcov/lcov coverage report"
