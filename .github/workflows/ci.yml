@@ -1,6 +1,9 @@
 # Execute tests and upload results to codecov (cmake based project with C code)
 name: CI
 on:
+  push:
+    branches:
+      - "*"
   pull_request:
     branches:
       - "*"
