@@ -1,6 +1,7 @@
 1. Configure the project to be build with code coverage enabled and tests
 
-> [INFO] If you are running on macOS, you may need to specify the paths to `llvm-profdata` and `llvm-cov` using `xcrun --find` as seen below.
+> [!IMPORTANT]
+> If you are running on macOS, you may need to specify the paths to `llvm-profdata` and `llvm-cov` using `xcrun --find` as seen below.
 
 ```sh
 cmake -S . -B build \
