@@ -3,6 +3,8 @@
         // Uncomment if needed
         // "LLVM_PROFDATA": "/Library/Developer/CommandLineTools/usr/bin/llvm-profdata",
         // "LLVM_COV": "/Library/Developer/CommandLineTools/usr/bin/llvm-cov",
+        // "BUILD_SHARED_LIBS": "on",
+        // "CMAKE_INTERPROCEDURAL_OPTIMIZATION": "on",
         "ENABLE_COVERAGE": "on",
         "BUILD_TESTING": "on"
     },
