@@ -1,0 +1,16 @@
+{
+    "cmake.configureSettings": {
+        // Uncomment if needed
+        // "LLVM_PROFDATA": "/Library/Developer/CommandLineTools/usr/bin/llvm-profdata",
+        // "LLVM_COV": "/Library/Developer/CommandLineTools/usr/bin/llvm-cov",
+        "ENABLE_COVERAGE": "on",
+        "BUILD_TESTING": "on"
+    },
+    // We need to run the coverage step after running the tests because vscode 
+    // only understands coverage with .info files. We also need to indicate where
+    // these coverage files are placed
+    "cmake.postRunCoverageTarget": "coverage",
+    "cmake.coverageInfoFiles": [
+        "${workspaceFolder}/build/coverage.info",
+    ]
+}

@@ -48,14 +48,14 @@ if(ENABLE_COVERAGE)
         set(COVERAGE_TYPE "llvm")
 
     elseif(CMAKE_C_COMPILER_ID STREQUAL "GNU")
-        message(STATUS "Using gcov/lcov coverage")
+        message(STATUS "${PROJECT_NAME}: Using gcov/lcov coverage")
 
         set(COVERAGE_COMPILE_FLAGS --coverage)
         set(COVERAGE_LINK_FLAGS --coverage)
 
         set(COVERAGE_TYPE "gcov")
     else()
-        message(FATAL_ERROR "Coverage not supported for compiler: ${CMAKE_C_COMPILER_ID}")
+        message(FATAL_ERROR "${PROJECT_NAME}: Coverage not supported for compiler: ${CMAKE_C_COMPILER_ID}")
     endif()
 
     target_compile_options(${PROJECT_NAME} PRIVATE ${COVERAGE_COMPILE_FLAGS})
@@ -83,7 +83,7 @@ if(BUILD_TESTING)
 
         add_test(NAME ${test_name} COMMAND ${test_name})
 
-        message(STATUS "Added test ${test_name}")
+        message(STATUS "${PROJECT_NAME}: Added test ${test_name}")
     endforeach()
 endif()
 
@@ -110,6 +110,10 @@ if(ENABLE_COVERAGE)
 
         add_custom_target(coverage
             COMMAND ${LLVM_PROFDATA} merge -sparse *.profraw -o coverage.profdata
+            COMMAND ${LLVM_COV} export 
+                $<TARGET_FILE:${PROJECT_NAME}> 
+                -instr-profile=coverage.profdata 
+                -format=lcov > coverage.info
             COMMAND ${LLVM_COV} show
                 $<TARGET_FILE:${PROJECT_NAME}>
                 -instr-profile=coverage.profdata
